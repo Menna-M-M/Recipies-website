@@ -1,0 +1,83 @@
+{%extends 'baseinherit.html'%}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/eachrecipie.css'%}">
+    <link rel="stylesheet" href="{%static 'css/nav.css'%}">
+    <script
+      src="https://kit.fontawesome.com/c7a32dcb0f.js"
+      crossorigin="anonymous"
+    ></script>
+
+</head>
+<body>
+    <header>
+        <h2>HUM YA GAMAL</h2>
+        <nav>
+          <a href="{%url 'home:userhome'%}">Home</a>
+          <a href="{%url 'home:favs'%}">Favourites</a>
+          <a href="{%url 'userauths:userprofile'%}">Profile</a>
+        </nav>
+      </header>
+    
+    <div class="recipiedetails" >
+        <div class="card-img-top">
+            <img src= "{{recipe.image.url}}" class="card-img-top" alt="..." width="400px" height="400px">
+        </div>
+        <h1><strong>{{recipe.title}}</strong></h1>
+        <hr>
+        <h5>Author: {{recipe.authername}}</h5>
+        <hr>
+        <h5>Course: {{recipe.course}}</h5>
+        <hr>
+        <h5>Total time: {{recipe.total}}, Cooking time: {{recipe.cook}}, Preparing time: {{recipe.prep}}</h5>
+        <hr>
+        <div class="content-of-the-page">
+            <h6>Content of the page:</h6>
+            <ul>
+                <a href="#theing"><li>The Ingredients</li></a>
+                <a href="#themethod"><li>The Method</li></a>
+                <a href="#thenut"><li>The Nutrition Facts</li></a>
+            </ul>
+        </div>
+        <div class="The Ingredients" id="theing">
+            <h3><i>The Ingredients:</i></h3>
+            <h5>Serving: {{recipe.serving}} people</h5>
+            {% for ingredient in ingredients %}
+            <ul>
+            <input type="checkbox"><label>{{ ingredient.Ingredient_quantity }} {{ ingredient.Ingredient_unit }} {{ ingredient.Ingredient_itself }}</label><br>
+            </ul>
+            {% endfor %}
+        </div>
+        <div class="The Method" id ="themethod">
+            <h3><i>Method:</i></h3>
+                {{recipe.method}}
+        </div>
+        <div class="The Nutritions" id ="thenut">
+            <h3><i>Nutrition Facts:</i></h3>
+            <table>
+                <tr>
+                    <th>Calories</th>
+                    <th>Fats</th>
+                    <th>Carbs</th>
+                    <th>Protein</th>
+                </tr>
+                <tr>
+                    <td>{{recipe.calories}}  {{recipe.calories_unit}}</td>
+                    <td>{{recipe.fats}}  {{recipe.fats_unit}}</td>
+                    <td>{{recipe.carbs}}  {{recipe.carbs_unit}}</td>
+                    <td>{{recipe.protein}}  {{recipe.protein_unit}}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</body>
+</html>
+<script src="{%static 'js/recipiecheck.js'%}"></script>
+{%endblock content%}

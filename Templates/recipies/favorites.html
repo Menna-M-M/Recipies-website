@@ -1,0 +1,47 @@
+{% extends 'baseinherit.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Recipes</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/favourites.css' %}">
+    <link rel="stylesheet" href="{%static 'css/nav.css'%}">
+    <script
+      src="https://kit.fontawesome.com/c7a32dcb0f.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <header>
+        <h2>HUM YA GAMAL</h2>
+        <nav>
+          <a href="{%url 'home:userhome'%}">Home</a>
+          <a href="{%url 'userauths:userprofile'%}">Profile</a>
+        </nav>
+    </header>
+    <h1>Favorite Recipes</h1>
+    {%for x in recipes%}
+    <ul>
+        <li>
+            <div class="recipes-container">
+                <div class="recipe">
+                    <a href="{%url 'home:eachrecipie' x.title%}"> <h2>{{x.title}}</h2> </a>
+                        <div class="card m-4" style="width: 18rem;">
+                            <a href="{%url 'home:eachrecipie' x.title%}">
+                              <img src="{{x.image.url}}" class="card-img-top" alt="{{recipe.title}}" width="400px" height="400px">
+                            </a>
+                        </div>
+                    <br>
+                </div>
+            </div>
+        </li>
+    </ul> 
+    {%endfor%}
+</body>
+</html>
+<script src="{% static 'js/favourites.js' %}"></script>
+{% endblock content %}

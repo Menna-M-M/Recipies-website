@@ -1,0 +1,30 @@
+{%load static%}
+
+<link rel="stylesheet" href="{% static 'css/edit.css'%}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+</head>
+
+<header>
+  <h2>HUM YA GAMAL</h2>
+  <nav>
+    <a href="{%url 'home:adminpage'%}">Home</a>
+    <a href="{%url 'home:add'%}">Add recipe</a>
+  </nav>
+</header>
+
+<body>
+    <h1>Edit Recipe</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save Changes</button>
+  </form>
+  
+
+</body>
+</html>

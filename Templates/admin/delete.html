@@ -1,0 +1,60 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/delete.css' %}">
+<script src="{% static 'js/delete.js' %}" defer></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c7a32dcb0f.js" crossorigin="anonymous"></script>
+    <title>Delete Recipe</title>
+</head>
+<header>
+    <h2>HUM YA GAMAL</h2>
+    <nav>
+        <a href="{% url 'home:adminpage' %}">Home</a>
+        <a href="{% url 'userauths:adprofile' %}">Profile</a>
+    </nav>
+</header>
+<body>
+<div class="container">
+    <img src="{% static 'images/trashcan.png' %}">
+    <div id="Id">
+        <h4><label for="userId">Please enter your ID:</label>
+        <input type="text" id="userId" name="id"></h4>
+    </div>
+    <h4>Why do you want to delete the recipe?</h4>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dbtn">click here!
+            <i class="arrow down"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+            <h5><input type="checkbox" name="reason" value="duplicate">
+            <label>It's a duplicated recipe.</label></h5>
+            <h5><input type="checkbox" name="reason" value="misinformation">
+            <label>It contains misinformation.</label></h5>
+            <h5><input type="checkbox" name="reason" value="reviews">
+            <label>It only has bad reviews.</label></h5>
+            <h5><input type="checkbox" name="reason" value="traffic">
+            <label>To help generate more traffic.</label></h5>
+            <h5><input type="checkbox" name="reason" value="else">
+            <label>else</label></h5>
+        </div>
+    </div>
+    <div id="reason" class="hide">
+        <label for="reason">Enter your reason:</label>
+        <textarea id="reasontext" rows="2"></textarea>
+    </div>
+    <p>Deleting this recipe will remove all of its information from our database.</p>
+    <p>This cannot be undone.</p>
+    <form method="post" action="{% url 'home:delete_recipe' recipe_id %}">
+      {% csrf_token %}
+      <button type="button" class="cl" onclick="window.history.back()">Cancel</button>
+      <button type="submit" class="link">Delete Recipe</button>
+    </form>
+</div>
+<script src="{% static 'js/delete.js' %}" defer></script>
+</body>
+</html>
+
+

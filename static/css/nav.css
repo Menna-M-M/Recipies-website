@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  margin: 0;
+  background-color: #edeee7;
+  /* color: #6d854b; */
+  font-family: Poppins;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+header h2 {
+  padding-right: 100px;
+  font-family: poppins;
+}
+
+header {
+  /* background: #6d854b; */
+  width: 1200px;
+  max-width: 100%;
+  margin: auto;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+  justify-content: center;
+  padding-left: 5px;
+}
+header a {
+  color: #6d854b;
+  margin-right: 40px;
+  font-size: 15px;
+}
+
+.search input[type="text"] {
+  width: 300px;
+  height: 25px;
+  border-radius: 25px;
+  border-color:#6d854b;
+}
+
+.search button {
+  background-color: #edeee7;
+  color: #6d854b;
+  float: right;
+  padding: 5px 10px;
+  margin-right: 16px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+}
+
+footer {
+    background: #edeee7;
+    padding-top: 50px;
+  }
+  .container {
+    width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .footer-content {
+    width: 33.3%;
+  }
+  h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #6d854b;
+  }
+  .footer-content p {
+    width: 190px;
+    margin: auto;
+    padding: 7px;
+    color: #6d854b;
+  }
+  .footer-content ul {
+    text-align: center;
+  }
+  .list {
+    padding: 0;
+  }
+  .list li {
+    width: auto;
+    text-align: center;
+    list-style-type: none;
+    padding: 7px;
+    position: relative;
+  }
+  .list li::before {
+    content: "";
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background: #6d854b;
+    transition-duration: 0.5s;
+  }
+  .list li:hover::before {
+    width: 70px;
+  }
+  .social-icons {
+    text-align: center;
+    padding: 0;
+  }
+  .social-icons li {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+  }
+  .social-icons i {
+    color: #6d854b;
+    font-size: 25px;
+  }
+  a {
+    text-decoration: none;
+    color: #6d854b;
+  }
+  a:hover {
+    color: #646464;
+  }
+  .social-icons i:hover {
+    color: #646464;
+  }
+  .bottom-bar {
+    background: #edeee7;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+  }
+  .bottom-bar p {
+    color: #6d854b;
+    border-color:#6d854b;
+    border-bottom: 5px solid;
+    border-top: 5px solid;
+    margin: 0;
+    font-size: 16px;
+    padding: 7px;
+  }

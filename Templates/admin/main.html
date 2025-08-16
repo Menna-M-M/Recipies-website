@@ -1,0 +1,109 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/maina.css' %}">
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Available Recipes</title>
+</head>
+<body>
+    <header>
+        <div class="hum">
+            <h2>HUM YA GAMAL</h2>
+        </div>
+        <nav>
+            <a href="{%url 'home:adminpage'%}">Home</a>
+            <a href="{%url 'home:add'%}">Add Recipie</a>
+            <a href="{%url 'userauths:adprofile'%}">Profile</a>
+            <div class="search">
+                <form action="#">
+                    <input type="text" placeholder="Search recipes"  name='searchText' id="searchfield"/>
+                    <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <h1>Welcome Our Chef to Hum Ya Gamal!</h1>
+    <div class="apptable">
+    <div class="mainc" id="recipeContainer" style="display: flex;" >
+        {%for x in recipies%}
+        <div class="card" style="width: 19rem; ">
+        <img src="{{x.image.url}}" class="card-img-top" alt="..." width="300px" height="300px">
+        </a>
+        <div class="card-body">
+            <a href="{%url 'home:eachrecipieadmin' x.title%}" class="btn btn-secondary"><h3 class="card-title"><strong>{{x.title}}</strong></h3></a>
+        </div>
+        <div class="btn" >
+            <form action="{% url 'home:delete_recipe' x.id %}" method="get">
+                {% csrf_token %}
+                <button type="submit" style="border: none; background: none;">
+                    <svg  width="29" height="29" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.015 6.506h-16v14.423c0 .591.448 1.071 1 1.071h14c.552 0 1-.48 1-1.071 0-3.905 0-14.423 0-14.423zm-5.75 2.494c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-4.5 0c.414 0 .75.336.75.75v8.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-8.5c0-.414.336-.75.75-.75zm-.75-5v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-16.507c-.413 0-.747-.335-.747-.747s.334-.747.747-.747zm4.5 0v-.5h-3v.5z" fill-rule="nonzero"/></svg>
+                </button>
+        </form>
+        <form action="{% url 'home:edit' x.id %}" >
+            {% csrf_token %}
+            <button type="submit" style="border: none; background: none;">
+                <svg  width="29" height="29" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m19 20.25c0-.402-.356-.75-.75-.75-2.561 0-11.939 0-14.5 0-.394 0-.75.348-.75.75s.356.75.75.75h14.5c.394 0 .75-.348.75-.75zm-12.023-7.083c-1.334 3.916-1.48 4.232-1.48 4.587 0 .527.46.749.749.749.352 0 .668-.137 4.574-1.493zm1.06-1.061 3.846 3.846 8.824-8.814c.195-.195.293-.451.293-.707 0-.255-.098-.511-.293-.706-.692-.691-1.742-1.741-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" fill-rule="nonzero"/>
+                </svg>      
+            </button>
+        </form>
+        </div>
+        </div>
+
+{%endfor%}
+    </div> 
+    </div>
+    <div class="tableoutput" style="color:#ff0000; font-family:Georgia, 'Times New Roman', Times, serif; font-size: xx-large; margin: auto; font-weight: bold;">
+
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Contact Us</h3>
+                <p>Email: Info@example.com</p>
+                <p>Phone: +121 56556 565556</p>
+                <p>Address: Your Address 123 street</p>
+            </div>
+            <div class="footer-content">
+                <h3>Quick Links</h3>
+                <ul class="list">
+                        <li><a href="{%url 'home:adminpage'%}">Home</a></li>
+                        <li><a href="{%url 'userauths:adprofile'%}">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li>
+                        <a href=""><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2023 your company. All rights reserved</p>
+        </div>
+    </footer>
+    <script src="{% static 'js/edit.js' %}"></script>
+    <script src="{% static 'js/home3.js' %}"></script>
+    <script src="{% static 'js/searchadmin.js' %}"></script>
+    <script src="{% static 'js/delete.js' %}"></script>
+</body>
+</html>

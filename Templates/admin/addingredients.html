@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{%static 'css/addrecipe.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ingredients</title>
+</head>
+<body>
+    <header>
+        <h2 style="color:#6D854B;">HUM YA GAMAL</h2>
+        <nav>
+          <a href="{%url 'home:adminpage'%}">Home</a>
+          <a href="{%url 'userauths:adprofile'%}">Profile</a>
+        </nav>
+    </header>
+<div class="input" >
+
+<h1 class="title">Add Your Recipe's Ingredients</h1>
+
+<form method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+<div class="ing">
+    <p>List Your Ingredients:</p>
+        <label style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ; font-size:large; color:#6D854B">Your Recipie:</label>
+        <br>
+        <input type="text" name="recipe" placeholder="{{title}}" value="{{title}}">
+    <br>
+    <br>
+    <button type="button" onclick="addIngredient()">Add Ingredient</button>
+    <br>
+    <div id="ingredients">
+        <div class="ingredient-item">
+            <br>
+            <input type="text" name="ingredient_quantity[]" placeholder="Quantity">
+            <select name="ingredient_unit[]">
+                <option value="teaspoon">Teaspoon</option>
+                <option value="clove">Clove</option>
+                <option value="ounce">Ounce</option>
+                <option value="kg">Kg</option>
+                <option value="piece">Piece</option>
+            </select>
+            <input type="text" name="ingredient_itself[]" placeholder="Ingredient">
+        </div>
+    </div>
+    <br>
+  </div>
+   <input type="submit" value="Save" onclick="validateInput(event)" id="submitbtn">
+   <br>
+   <br>
+  </form>
+  
+  <script>
+    function addIngredient() {
+        var ingredientDiv = document.createElement('div');
+        ingredientDiv.className = 'ingredient-item';
+        ingredientDiv.innerHTML = `
+            <br>
+            <input type="text" name="ingredient_quantity[]" placeholder="Quantity">
+            <select name="ingredient_unit[]">
+                <option value="teaspoon">Teaspoon</option>
+                <option value="clove">Clove</option>
+                <option value="ounce">Ounce</option>
+                <option value="kg">Kg</option>
+                <option value="piece">Piece</option>
+            </select>
+            <input type="text" name="ingredient_itself[]" placeholder="Ingredient">
+        `;
+        document.getElementById('ingredients').appendChild(ingredientDiv);
+    }
+  </script>
+  <script src="{%static 'js/ing.js'%}"></script>
+</body>
+</html>

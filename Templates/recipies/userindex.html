@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container">
+      <div class="profile-info">
+          <img id="profile-img" src="{% static 'images/admin.jpg' %}" alt="Profile Picture" width="170px" height="170px">
+          <div class="profile-details">
+              <h2 id="profile-name">{{user.username}}</h2> <!-- Display user's name here -->
+              <input type="text" id="name-input" style="display: none;">
+              <button class="button" id="edit-name-button">Edit Name</button>
+              <button  class= "button" id="save-name-button" style="display: none;">Save Name</button>
+              <p>Joined: <span id="joined-date"></span></p> <!-- Display joined date here -->
+          </div>
+      </div>
+      <div class="about-me">
+          <h3>About Me:</h3>
+          <div class="about-me-box">
+              <textarea id="about-text" class="info-text" placeholder="Write something about yourself..."></textarea>
+          </div>
+          <h3>Contact Information:</h3>
+          <img class="gmail-img" src="{% static 'images/webgmail.png' %}" alt="gmail" width="32" height="28"><h4 style="color:#6D854B; display: inline; margin-left: 1%; margin-top: 0%;" >{{user.email}}</h4></br>
+          <img src="{% static 'images/location_.png' %}" alt="Facebook" width="30" height="40">
+          <textarea class="contact-text info-text" placeholder="Write your Location..."></textarea></br>
+          <h3>Social Media:</h3>
+          <img src="{% static 'images/webfacebook.png' %}" alt="Facebook" width="32" height="32">
+          <textarea class="contact-text info-text" placeholder="Facebook..."></textarea></br>
+          <img src="{% static 'images/webtwitter.png' %}" alt="twitter" width="32" height="32">
+          <textarea class="contact-text info-text" placeholder="twitter..."></textarea></br>
+          <img src="{% static 'images/webinstagram (1).png' %}" alt="instagram" width="32" height="32">
+          <textarea class="contact-text info-text" placeholder="instagram..."></textarea></br>
+          <h3><a class="button" href="{%url 'home:favs'%}">View Favorite Recipes </a></h3>
+          <!-- Add your favorite recipes or other items here -->
+          <h3>Settings:</h3>
+          <button class="button" id="logout-button" >Logout</button>
+          
+          <input type="file" accept="image/*" id="file-input" style="display: none;">
+      </div>
+    
+  </div>
+  <!-- Confirmation dialog container -->
+  <div class="confirmation-dialog-container" id="confirmation-dialog-container" style="display: none;">
+      <div class="confirmation-dialog">
+          <p>Are you sure you want to log out?</p>
+          <a href="{% url 'core:index' %}"><button id="logout-yes" >Yes</button></a>
+          <button id="logout-cancel">Cancel</button>
+      </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const profileName = document.getElementById('profile-name');
+        const nameInput = document.getElementById('name-input');
+        const editNameButton = document.getElementById('edit-name-button');
+        const saveNameButton = document.getElementById('save-name-button');
+    
+        editNameButton.addEventListener('click', function() {
+            nameInput.value = profileName.textContent.trim();
+            nameInput.style.display = 'inline';
+            saveNameButton.style.display = 'inline';
+            profileName.style.display = 'none';
+            editNameButton.style.display = 'none';
+        });
+    
+        saveNameButton.addEventListener('click', function() {
+            const newName = nameInput.value;
+            profileName.textContent = newName;
+            nameInput.style.display = 'none';
+            saveNameButton.style.display = 'none';
+            profileName.style.display = 'inline';
+            editNameButton.style.display = 'inline';
+    
+            const csrfToken = getCookie('csrftoken');
+    
+            fetch("{% url 'userauths:update_name' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+                body: JSON.stringify({ 'new_name': newName }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    console.error('Failed to update name.');
+                    // Optionally handle error scenario here
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Optionally handle error scenario here
+            });
+        });
+    
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        const logoutButton = document.getElementById('logout-button');
+    const logoutYesButton = document.getElementById('logout-yes');
+    const logoutCancelButton = document.getElementById('logout-cancel');
+    const confirmationDialogContainer = document.getElementById('confirmation-dialog-container');
+
+    // Function to show the confirmation dialog
+    function showConfirmationDialog() {
+        confirmationDialogContainer.style.display = 'flex';
+    }
+
+    // Function to hide the confirmation dialog
+    function hideConfirmationDialog() {
+        confirmationDialogContainer.style.display = 'none';
+    }
+
+    // When logout button is clicked, show the confirmation dialog
+    logoutButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default action of the button
+        showConfirmationDialog();
+    });
+
+    // When "Yes" button in the confirmation dialog is clicked, perform logout
+    logoutYesButton.addEventListener('click', function() {
+        // Perform logout actions here
+        // Redirect to homepage.html
+        window.location.href = 'homepage.html';
+
+        // Hide confirmation dialog
+        hideConfirmationDialog();
+    });
+
+    // When "Cancel" button in the confirmation dialog is clicked, hide the dialog
+    logoutCancelButton.addEventListener('click', function() {
+        // Hide confirmation dialog
+        hideConfirmationDialog();
+    });
+    });
+    </script>
+{% endblock content %}
+    

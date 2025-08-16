@@ -1,0 +1,79 @@
+{% extends 'baseinherit.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage: All Available Recipes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/userhome.css' %}">    
+    <link rel="stylesheet" href="{%static 'css/nav.css'%}">
+    <script src="https://kit.fontawesome.com/c7a32dcb0f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+            <h2>HUM YA GAMAL</h2>
+            <nav>
+              <a href="{%url 'home:userhome'%}">Home</a>
+              <a href="{%url 'home:favs'%}">Favourites</a>
+              <a href="{%url 'userauths:userprofile'%}">Profile</a>
+          
+        <div class="search">
+            <form action="#">
+              <input type="text" placeholder="Search reciepes" name='searchText' id="searchfield" />
+              <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </nav>
+    </header>
+<div>
+    <h1>Welcome to Hum ya Gamal!</h1>
+    <h2>Where you can find any recipe you are looking for!</h2> 
+    <h2>Eating is a necessity, but cooking is an art!</h2> 
+</div>
+<div class="apptable">
+<div class="mainc" id="recipeContainer">
+    {%for x in recipies%}
+    <div class="card" style="width: 19rem;">
+        <a href="{% url 'home:eachrecipie' x.title  %}">
+        <img src="{{x.image.url}}" class="card-img-top" alt="..." width="300px" height="300px">
+        </a>
+        <div class="card-body">
+            <a href="{%url 'home:eachrecipie' x.title%}" class="btn btn-secondary"><h3 class="card-title"><strong>{{x.title}}</strong></h3></a>
+        </div>
+       
+        <div class="fav-btn">
+            {% if x.is_fav %}
+            <a href="{% url 'home:not_favorites' x.title%}">
+                    <svg id="favyellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="favorite-icon filled" style="fill : goldenrod">
+                        <path d="M12 6.76l1.379 4.246h4.465l-3.612 2.625 1.379 4.246-3.611-2.625-3.612 2.625 1.379-4.246-3.612-2.625h4.465l1.38-4.246zm0-6.472l-2.833 8.718h-9.167l7.416 5.389-2.833 8.718 7.417-5.388 7.416 5.388-2.833-8.718 7.417-5.389h-9.167l-2.833-8.718z"/>
+                    </svg>
+            </a>
+            {% else %}
+            <a href="{% url 'home:toggle_favorites' x.title%}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="favorite-icon">
+                    <path d="M12 6.76l1.379 4.246h4.465l-3.612 2.625 1.379 4.246-3.611-2.625-3.612 2.625 1.379-4.246-3.612-2.625h4.465l1.38-4.246zm0-6.472l-2.833 8.718h-9.167l7.416 5.389-2.833 8.718 7.417-5.388 7.416 5.388-2.833-8.718 7.417-5.389h-9.167l-2.833-8.718z"/>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+{%endfor%}
+</div>
+</div>
+
+<div class="tableoutput" style="color:#ff0000; font-family:Georgia, 'Times New Roman', Times, serif; font-size: xx-large; margin: auto; font-weight: bold;">
+
+
+</div>
+
+</body>
+<script src="{%static 'js/userhome.js'%}" defer></script>
+</html>
+{% endblock content %}
+

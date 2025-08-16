@@ -1,0 +1,64 @@
+.mainc {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card {
+    border : 5px #ffffff ;
+    border-style: solid;
+margin:30px;
+}
+.card-body{
+    margin: auto;
+    text-align: center;
+    color: #6D854B;
+    font-size:medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.card-title{
+   font-style: italic;
+   font-size: x-large;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   text-align: center;
+   color: #6D854B;
+}
+*{
+    background-color: #edeee7;
+}
+a{
+    color:#6D854B;
+}
+.fav-btn{
+    display: flex;
+    justify-content: center;
+}
+svg:hover {
+   fill: goldenrod;
+}
+svg{
+    cursor: pointer;
+}
+.favorite-icon.filled {
+    fill:  goldenrod !important;
+}
+
+#favyellow {
+    fill:  goldenrod !important;
+}
+h1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 70px;
+    text-align: center;
+    color : #6D854B;
+    text-decoration:underline;
+    text-shadow: grey 5px 7px 9px;
+}
+h2{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    text-align: center;
+    color : #6D854B;
+
+}
+

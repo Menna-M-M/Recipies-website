@@ -1,0 +1,118 @@
+* {
+  background-color: #edeee7;
+
+}
+ 
+
+div{
+  align-items: center;
+}
+p{
+  color: black;
+  font-size: 25px;
+}
+
+.title{
+  color: #6D854B ;
+  font-size: 45px;
+  text-align: center;
+  font-family: cursive ;
+}
+.box{
+  height: 25px;
+  margin-left: 5px;
+  margin-top: 5px;
+  border: 2px solid #6D854B; 
+}
+
+.input {
+  margin-left: 100px;
+  border: 2px solid white;
+  width: 1173px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+div.ing{
+  text-align: center;
+}
+
+ol.ingredientlist{
+  display: inline-block;
+text-align: left;
+margin-bottom: 0;
+}
+
+.ingbox{
+  width:75px;
+
+}
+.ingbox1{
+  width:75px;
+
+}
+.nut{
+
+  height: 80px;
+}
+.nut p {
+display: inline;
+padding-left: 5px;
+height: 25px;
+
+}
+#nubox.box{
+  width: 100px;
+
+}
+
+.nutbox1{
+margin-left: 62.5px;
+margin-right: 62.5px;
+margin-bottom: 40px;
+  border:2px solid #6D854B ;
+  text-align: center;
+}
+p.header{
+  text-align: center;
+  width: 500px;
+margin-top:-10px;
+margin-left:250px;
+margin-right: 200px;
+background: #edeee7;
+}
+
+#time p.item1{
+display: inline;
+padding-left: 5px;
+
+}
+
+#time.nutbox1{
+  height:140px;
+}
+
+.textbox{
+  border-color: #6D854B;
+  border-width: 2px;
+  width: 700px;
+  height: 200px;
+}
+
+
+h2{
+  font-size: 15px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-color: #6D854B;
+}
+#submitbtn{
+  width: 300px;
+  height: 50px;
+  
+}

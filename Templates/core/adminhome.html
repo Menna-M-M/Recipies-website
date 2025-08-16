@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport content="/>
+     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+     <script
+     src="https://kit.fontawesome.com/c7a32dcb0f.js"
+     crossorigin="anonymous"
+   ></script>
+     <title>Profile</title> 
+</head>
+<header>
+  <div class="hum">
+  <h2>HUM YA GAMAL</h2>
+</div>
+  <nav>
+    <a href="avaliablerecipiesadmin.html">Home</a>
+    <a href="addrecipe.html">Add recipe</a>
+    <div class="search">
+      <form action="#">
+        <input type="text" placeholder="Search reciepes" name="search" />
+        <button>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+  </nav>
+  
+</header>
+<body>
+  <div class="profile-container">
+    <div class="profileinfo">
+    <div class="card">
+    <img src="{% static 'images/admin.png' %}" class="admin">
+    <h4>Name:</h4> <h5 id="adminname"></h5> <!-- Display admin's name here -->
+    <h4>Position:</h4><h5 id="adminp"></h5> <!-- Display admin's position here -->
+    <h4 >Gaduated from:</h4><h5 id="adming"></h5> 
+    </div>
+    <div class="info">
+      <ul>
+        <li>
+          <img src="{% static 'images/webfacebook.png' %}" ><p id="Facebook"></p>
+        </li>
+        <li>
+          <img src="{% static 'images/webgmail.png' %}" ><p id="gmail"></p>
+        </li>
+        <li>
+          <img src="{% static 'images/LinkedIn_.png' %}"><p id="LinkedIn"></p>
+        </li>
+        <li>
+          <h5>Phone number</h5><p id="number">+</p>
+        </li>
+        <li>
+          <h5>admin's Id</h5><p id="id"></p>
+        </li>
+  </ul>
+  </div>
+</div>
+<!-- <div class="todo">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="What is in oyur mind?">
+    <button type="button">Add</button>
+  <input type ="checkbox" name="Chicken curry">
+      <label>Chicken curry</label>
+
+      <input type ="checkbox" name="New Dessert">
+      <label>New Dessert</label>
+
+      <input type ="checkbox" name="Edit in Pudding">
+      <label>Edit in Pudding</label>
+</div>-->
+ <div class="calendar">
+  <div class="header">
+    <button id="prevMonthBtn"><img src="{% static 'images/left.png' %}"></button>
+    <h2 id="currentMonth" class="currentMonth"></h2>
+    <button id="nextMonthBtn"><img src="{% static 'images/right.png' %}"></button>
+  </div>
+  <ul class="weekdays">
+    <li>Mo</li>
+    <li>Tu</li>
+    <li>We</li>
+    <li>Th</li>
+    <li>Fr</li>
+    <li>Sa</li>
+    <li>Su</li>
+  </ul>
+  <div class="days">
+  </div>
+</div>
+<button class="logout">
+
+  <a href="{% url 'userauths:sign-out' %}">log out</a>
+</button>
+
+<script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

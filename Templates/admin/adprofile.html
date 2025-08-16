@@ -1,0 +1,84 @@
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'css/adprofile.css' %}">
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
+
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport content="/>
+     <link rel="stylesheet" href="profile.css">
+     <title>Profile</title> 
+</head>
+<header>
+  <h2 style="color:#6D854B;">HUM YA GAMAL</h2>
+<nav class="usernav">
+  <a href="{% url 'home:adminpage' %}">Home</a>
+  <a href="{% url 'home:add' %}">Add new recipie</a>
+  <a href="{% url 'core:index' %}"><button class="btn">Log Out</button></a>
+  </nav>
+</header>
+<body>
+  <div class="profile-container">
+    <div class="profileinfo">
+    <div class="card">
+      <img src="{% static 'images/admin.png' %}" class="admin">
+      <h4>Name:</h4> <h4 id="adminname" style="color:#6D854B;">{{ admin.username }}</h4>
+      <h4>Position:</h4><h5 id="adminp"><textarea class="contact-text info-text" placeholder="Position..."></textarea></br></h5>
+      <h4>Graduated from:</h4><h5 id="adming"><textarea class="contact-text info-text" placeholder="Graduation..."></textarea></br></h5>
+    </div>
+    <div class="info">
+      <ul>
+        <li>
+          <img src="{% static 'images/webfacebook.png' %}"><p id="Facebook"><textarea class="contact-text info-text" placeholder="Facebook..."></textarea></br></p>
+        </li>
+        <li>
+            <img src="{% static 'images/webgmail.png' %}"><p id="gmail" style="color:#6D854B;">{{ admin.email }}</p>
+        </li>
+        <li>
+          <img src="{% static 'images/LinkedIn_.png' %}"><p id="LinkedIn"><textarea class="contact-text info-text" placeholder="LinkedIn..."></textarea></br></p>        </li>
+        <li>
+          <h5>Phone number</h5><p id="number"><textarea class="contact-text info-text" placeholder="Phone..."></textarea></br></p>        </li>
+        <li>
+          <li><h5>Admin's Id</h5><p id="id" style="color:#6D854B;">{{ admin.id }}</p></li>
+        </li>
+  </ul>
+  </div>
+</div>
+<!-- <div class="todo">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="What is in oyur mind?">
+    <button type="button">Add</button>
+  <input type ="checkbox" name="Chicken curry">
+      <label>Chicken curry</label>
+
+      <input type ="checkbox" name="New Dessert">
+      <label>New Dessert</label>
+
+      <input type ="checkbox" name="Edit in Pudding">
+      <label>Edit in Pudding</label>
+</div>-->
+ <div class="calendar">
+  <div class="header">
+    <button id="prevMonthBtn"><img src="{% static 'images/left.png' %}"></button>
+    <h2 id="currentMonth" class="currentMonth"></h2>
+    <button id="nextMonthBtn"><img src="{% static 'images/right.png' %}"></button>
+  </div>
+  <ul class="weekdays">
+    <li>Mo</li>
+    <li>Tu</li>
+    <li>We</li>
+    <li>Th</li>
+    <li>Fr</li>
+    <li>Sa</li>
+    <li>Su</li>
+  </ul>
+  <div class="days">
+  </div>
+</div>
+<script src="{% static 'js/adprofile.js' %}"></script>
+</body>
+</html>

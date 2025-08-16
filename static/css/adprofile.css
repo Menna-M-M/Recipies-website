@@ -1,0 +1,120 @@
+.profile-container {
+  display: flex;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+body{
+  background-color: #edeee7;
+  text-align: left;
+  height: 100%;
+}
+.card{
+  background-color: white;
+  padding: 20px;
+  border: 2px solid #6d854b;
+  margin: 30px 0px;
+  text-align:left;
+  width: 290px;
+
+}
+img{
+  width: 40px;
+  height: 40px;
+}
+.admin{
+  width: 150px;
+  height: 150px;
+}
+.info{
+  background-color: white;
+  padding: 8px;
+  border: 2px solid #6d854b;
+  margin: 15px 0px;
+  text-align:left;
+  width: 320px;
+}
+li{
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.info ul {
+list-style-type: none;
+padding: 0;
+}
+
+.info ul li {
+display: flex;
+align-items: center;
+border-bottom: 1px solid #6d854b; 
+}
+
+.info ul li img {
+margin-right: 8px; 
+}
+.calendar {
+  width: 900px;
+  height: 500px;
+  background-color: #ffffff;
+  border: 1px solid #6d854b;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 29px;
+}
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color:#ddd;
+}
+
+.weekdays li , .currentMonth {
+  display: inline-block;
+  display:inline;   
+  color: #6d854b;
+  justify-content: space-between;
+  display: inline-block;
+  width: calc(100% / 8); /* Equal width for each weekday */
+  text-align: center;
+  margin-right: 7px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.todo {
+  margin-top: 20px;
+}
+
+.todo input[type="text"] {
+  width: 200px;
+}
+
+.todo ul {
+  list-style-type: none;
+  padding: 0;
+}
+.day {
+  padding: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+
+
+

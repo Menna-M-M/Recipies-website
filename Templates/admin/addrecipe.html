@@ -1,0 +1,96 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html lang="en"> 
+<head>
+    <link rel="stylesheet" href="{%static 'css/addrecipe.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+           <meta charset=“UTF-8”>
+           <meta name=“viewport” initial-scale=1.0”/>  
+           
+</head>
+<body >
+    <header>
+        <h2 style="color:#6D854B;">HUM YA GAMAL</h2>
+        <nav>
+          <a href="{%url 'home:adminpage'%}">Home</a>
+          <a href="{%url 'userauths:adprofile'%}">Profile</a>
+        </nav>
+    </header>
+<div class="input" >
+
+<h1 class="title">Add Your New Yummy Recipe</h1>
+<div>
+
+ <form method="POST" enctype="multipart/form-data" action="{% url 'home:add' %}">
+        {% csrf_token %}
+    <p>Write Your Name:</p> 
+    <input id="inputname" class="box" type="text" placeholder="author name" name="authername">
+ </div>
+
+<div> 
+      <p>Please Choose an Image for your recipe:</p>
+         <input class="box" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="image">
+</div>
+
+<div>
+  <p>Tell us your recipe name:</p>
+   <input class="box" type="text" id="recipename" placeholder="Recipe name " id="recipename" name="recipename">
+</div>
+
+<div>
+   <p>choose the recipe courses:</p>
+   
+   <div>
+    <label for="course">Course:</label>
+    <select id="course" name="course">
+        <option value="main_course">Main Course</option>
+        <option value="appetizers">Appetizers</option>
+        <option value="dessert">Dessert</option>
+    </select>
+</div>
+<div>
+    <p>Your ingredient user for serving how many person ?: </p>
+        <input class=box type="text" name="serving">
+</div>
+
+<div>
+ <p>Write The details of your recipe in steps:</p>
+       <textarea id='method' class="textbox" rows="6" cols="60" placeholder="Example:
+
+                               step 1:put the dry ingredient the the bowl
+
+                          step 2: mix them" name="method" ></textarea> <!--fel backend lama ybd2a yktab el placeholder y5tfi-->
+
+</div>
+<br>
+<br>
+
+<div class="nutbox1">
+<p class="header">Nutrients facts per meal</p> <br>
+
+<div class="nut">
+    <p>Protien:</p><input class="box"  id="nutbox1" type="text" placeholder="protien" name="protein">
+    <p>Fats:</p><input class="box" id="nutbox2" type="text" placeholder="fat" name="fats">
+    <p>Carbs:</p><input class="box" id="nutbox3" type="text" placeholder="carbs" name="carbs">
+    <p>Calories:</p><input class="box" id="nutbox4" type="text" placeholder="calories" name="calories">
+</div>
+</div>
+<div class="nutbox1" id="time">
+    <p class="header">How many time your recipe will take</p>
+    <p class="item1">Prep Time:</p><input class="box" type="text" id-="prep" name="prep">
+    <p class="item1">Cook Time:</p><input class="box" type="text" id="cook" name="cook">
+    <p class="item1">Total Time:</p><input class="box" type="text" id="total" name="total">
+
+</div>
+</div>
+<div>
+<script src="{%static 'js/adrecipe.js'%}"></script>
+<a href="{% url 'home:adding' %}"><input type="submit" value="Next" onclick="validateInput(event)" id="submitbtn">
+</a>
+</div>
+</form>
+<script src="{%static 'js/addrecipe.js'%}"></script>
+
+</body> 
+</html> 
+{%endblock%}
