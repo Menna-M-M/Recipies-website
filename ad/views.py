@@ -50,7 +50,8 @@ def index(request):
 def delete_recipe(request, recipe_id):
     if request.method == "POST":
         if request.user.username == "demo_account": 
-             return HttpResponseForbidden("Demo account cannot make changes.")
+                messages.error(request, "🚫 Demo account cannot perform changes.")
+                return redirect(request.META.get("HTTP_REFERER", "/"))
         recipe = get_object_or_404(Recipie, id=recipe_id)
         
         recipe.delete()
@@ -64,7 +65,8 @@ def edit(request, recipe_id):
 
     if request.method == "POST":
         if request.user.username == "demo_account": 
-            return HttpResponseForbidden("Demo account cannot make changes.")
+                messages.error(request, "🚫 Demo account cannot perform changes.")
+                return redirect(request.META.get("HTTP_REFERER", "/"))
         form = RecipieForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
             form.save()
@@ -85,8 +87,9 @@ def adminhome(request):
 
 def addrecipe(request):
     if request.method == 'POST':
-        if request.user.username == "demo_account": 
-            return HttpResponseForbidden("Demo account cannot make changes.")
+        # if request.user.username == "demo_account": 
+        #         messages.error(request, "🚫 Demo account cannot perform changes.")
+        #         return redirect(request.META.get("HTTP_REFERER", "/"))
         title = request.POST.get('recipename', '')
         ingredients = request.POST.get('ingredients', '')
         instructions = request.POST.get('instructions', '')
@@ -128,7 +131,8 @@ def adding(request):
 
         if request.method == 'POST':
             if request.user.username == "demo_account": 
-             return HttpResponseForbidden("Demo account cannot make changes.")
+                messages.error(request, "🚫 Demo account cannot perform changes.")
+                return redirect(request.META.get("HTTP_REFERER", "/"))
             # Process and save ingredients
             recipe = request.POST.get('recipe')
             quantities = request.POST.getlist('ingredient_quantity[]')

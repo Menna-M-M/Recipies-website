@@ -6,7 +6,42 @@
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
            <meta charset=“UTF-8”>
            <meta name=“viewport” initial-scale=1.0”/>  
-           
+<style>
+.messages-center{
+  text-align:center;
+  margin:16px 0;
+}
+.msg{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
+  margin:6px auto;
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+.msg-error, .msg-danger{
+  background:#fdecea;
+  color:#b3261e;
+  border:1px solid #f5c2c7;
+}
+.msg-success{
+  background:#e9f7ef;
+  color:#0f5132;
+  border:1px solid #badbcc;
+}
+.msg-warning{
+  background:#fff8e1;
+  color:#664d03;
+  border:1px solid #ffe69c;
+}
+.msg-info{
+  background:#e7f1ff;
+  color:#084298;
+  border:1px solid #b6d4fe;
+}
+</style>      
 </head>
 <body >
     <header>
@@ -22,6 +57,13 @@
 <div>
 
  <form method="POST" enctype="multipart/form-data" action="{% url 'home:add' %}">
+    {% if messages %}
+  <div class="messages-center">
+    {% for message in messages %}
+      <div class="msg msg-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
         {% csrf_token %}
     <p>Write Your Name:</p> 
     <input id="inputname" class="box" type="text" placeholder="author name" name="authername">
