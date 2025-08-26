@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import RecipieForm
 import json
-from django.http import JsonResponse
+from django.http import HttpResponseForbidden, JsonResponse
 # Create your views here.
 def userhome (request):
     return render (request, 'recipies/userhome.html',  {'recipies': Recipie.objects.all()})
@@ -49,6 +49,8 @@ def index(request):
 
 def delete_recipe(request, recipe_id):
     if request.method == "POST":
+        if request.user.username == "demo_account": 
+             return HttpResponseForbidden("Demo account cannot make changes.")
         recipe = get_object_or_404(Recipie, id=recipe_id)
         
         recipe.delete()
@@ -61,6 +63,8 @@ def edit(request, recipe_id):
     recipe = get_object_or_404(Recipie, id=recipe_id)
 
     if request.method == "POST":
+        if request.user.username == "demo_account": 
+            return HttpResponseForbidden("Demo account cannot make changes.")
         form = RecipieForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
             form.save()
@@ -81,6 +85,8 @@ def adminhome(request):
 
 def addrecipe(request):
     if request.method == 'POST':
+        if request.user.username == "demo_account": 
+            return HttpResponseForbidden("Demo account cannot make changes.")
         title = request.POST.get('recipename', '')
         ingredients = request.POST.get('ingredients', '')
         instructions = request.POST.get('instructions', '')
@@ -121,6 +127,8 @@ def adding(request):
         title = request.GET.get('title', '')  # Extract the title from query parameters
 
         if request.method == 'POST':
+            if request.user.username == "demo_account": 
+             return HttpResponseForbidden("Demo account cannot make changes.")
             # Process and save ingredients
             recipe = request.POST.get('recipe')
             quantities = request.POST.getlist('ingredient_quantity[]')

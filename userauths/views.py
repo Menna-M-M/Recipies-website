@@ -49,7 +49,7 @@ def login_view(request):
         if user is not None:
             request.session['user_id'] = user.id
             login(request, user)
-            if user.is_superuser:
+            if user.is_superuser  or user.is_staff:
                 return redirect('home:adminpage')  # Redirect admin to admin page
             else:
                 return redirect('home:userhome')    # Redirect normal user to core page

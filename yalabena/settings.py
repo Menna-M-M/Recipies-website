@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-r$-97^fe!36g34mc&ueg#$)ev9!^mjeig^8pa3uml+7m#w&ei9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['MennaMM.pythonanywhere.com']  # Allow all hosts for development; change in production
+ALLOWED_HOSTS = ['MennaMM.pythonanywhere.com',
+                 "127.0.0.1"] 
 
 
 # Application definition
